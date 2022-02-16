@@ -1,0 +1,31 @@
+.nav-color {
+    color: #79a9d1;
+}
+.about-resume {
+    background-color: #3a4856;
+    line-height: 3rem;
+    color: white;
+    font-style: normal;
+    padding: 60px 80px;
+    margin: 20px;
+}
+
+.footer-txt {
+    font-weight: lighter;
+}
+
+.tosepeartewithnav {
+    margin-top: 120px;
+}
+
+.hr {
+    border-top: 5px solid;
+}
+
+.something {
+    background-color: red;
+}
+
+.publish-date {
+    font-size: smaller;
+}
