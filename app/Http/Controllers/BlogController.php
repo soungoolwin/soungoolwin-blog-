@@ -16,17 +16,11 @@ class BlogController extends Controller
     }
     public function allMyanBlogs()
     {
-        return view('blogs.all-blogs', [
-            'blogs'=>Blog::orderBy('id', 'DESC')->paginate(6),
-            'bloglanguage'=>'myanmar'
-        ]);
+        return view('livewire.myanblogs');
     }
     public function allEngBlogs()
     {
-        return view('blogs.all-blogs', [
-            'blogs'=>EngBlog::orderBy('id', 'DESC')->paginate(6),
-            'bloglanguage'=>'english'
-        ]);
+        return view('blogs.all-blogs');
     }
     public function showMyanBlog(Blog $blog)
     {
