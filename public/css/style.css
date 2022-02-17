@@ -15,7 +15,7 @@
 }
 
 .tosepeartewithnav {
-    margin-top: 120px;
+    margin-top: 110px;
 }
 
 .hr {
@@ -28,4 +28,12 @@
 
 .publish-date {
     font-size: smaller;
+}
+
+.reachmeLogo a {
+    margin-right: 10px;
+}
+
+.navbaractive {
+    font-weight: bold;
 }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\EngBlog;
 use App\Models\Photo;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -25,12 +26,15 @@ class DatabaseSeeder extends Seeder
 
         $mgmg=User::factory()->create(['name'=>'mgmg']);
         $zawzaw=User::factory()->create(['name'=>'zawzaw']);
+        $soung=User::factory()->create(['name'=>'soungoolwin']);
         
         $frontend=Category::factory()->create(['name'=>'frontend']);
         $backend=Category::factory()->create(['name'=>'backend']);
 
         Blog::factory(5)->create(['user_id'=>$mgmg->id,'category_id'=>$frontend->id,'image'=>'https://i.ibb.co/Kb95WX3/effects-tried-0-photos-added-0-origin-gallery-total-effects-actions-0-remix-data-tools-used-tilt-shi.jpg"']);
         Blog::factory(5)->create(['user_id'=>$zawzaw->id,'category_id'=>$backend->id,'image'=>'https://i.ibb.co/Kb95WX3/effects-tried-0-photos-added-0-origin-gallery-total-effects-actions-0-remix-data-tools-used-tilt-shi.jpg"']);
+
+        EngBlog::factory(5)->create(['user_id'=>$soung->id,'category_id'=>$backend->id,'image'=>'https://i.ibb.co/Kb95WX3/effects-tried-0-photos-added-0-origin-gallery-total-effects-actions-0-remix-data-tools-used-tilt-shi.jpg"']);
 
 
         $photo = new Photo();

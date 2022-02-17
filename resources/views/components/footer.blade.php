@@ -10,33 +10,18 @@
                 </p>
 
                 <div class="row text-center">
-                    <div class="col-sm-2">
-                        <h1>
+                    <div class="col-md-12">
+                        <h1 class="reachmeLogo">
                             <a href="https://github.com/soungoolwin"><i class="fa-brands fa-github"></i></a>
-                        </h1>
-                    </div>
-                    <div class="col-sm-2">
-                        <h1>
                             <a href="https://www.linkedin.com/in/soung-oo-lwin-126998224/"><i
                                     class="fa-brands fa-linkedin"></i></a>
-                        </h1>
-                    </div>
-                    <div class="col-sm-2">
-                        <h1>
                             <a href="https://www.youtube.com/channel/UCOMkrfU_U63W2qJ2WXz8beA"><i
                                     class="fa-brands fa-youtube"></i></a>
-                        </h1>
-                    </div>
-                    <div class="col-sm-2">
-                        <h1>
                             <a href="https://anchor.fm/soung-oo-lwin"><i class="fa-solid fa-podcast"></i></a>
-                        </h1>
-                    </div>
-                    <div class="col-sm-2">
-                        <h1>
                             <a href="https://www.facebook.com/soung.lwin.75"><i class="fa-brands fa-facebook"></i></a>
                         </h1>
                     </div>
+
                 </div>
                 <p class="text-white text-center">
                     Email:

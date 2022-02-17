@@ -1,8 +1,8 @@
 <!-- ------------subscribe-form------------- -->
-<div class="container my-5" style="width: 800px">
-    <div class="card">
-        <div class="row justify-content-md-center my-5">
-            <div class="col-md-6 text-center">
+<div class="container my-5">
+    <div class="row  my-5">
+        <div class="col-md-6 text-center offset-md-3">
+            <div class="card p-3">
                 <h3 class="my-3">Subscribe Form</h3>
                 <form>
                     <div class="form-group">

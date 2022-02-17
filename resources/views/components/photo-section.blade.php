@@ -6,7 +6,7 @@
     </h3>
     <div class="row">
         @foreach ($photos as $photo)
-        <div class="col-md-6">
+        <div class="col-md-6 my-3">
             <div class="card p-3">
                 <img src="{{$photo->source}}" class="card-img-top img-fluid" style="height:22rem" alt="..." />
                 <div class="card-body">
@@ -14,7 +14,6 @@
                 </div>
             </div>
         </div>
-
         @endforeach
     </div>
 </div>
