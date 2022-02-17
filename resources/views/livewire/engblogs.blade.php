@@ -4,13 +4,14 @@
             <h3 class="text-center">Blogs</h3>
             <input type="text" wire:model='search' class="form-control" placeholder="Search"
                 aria-describedby="passwordHelpBlock" id="search" />
+            <!--this id is for script-->
             <div class="text-center my-3">
                 <a href="/mblogs"
                     class="text-decoration-none text-secondary p-3 {{Request::is('mblogs') ? 'navbaractive' : ''}}">Myanmar</a>
                 <a href="/eblogs"
                     class="text-decoration-none text-secondary {{Request::is('eblogs') ? 'navbaractive' : ''}}">English</a>
             </div>
-            <x-category-dropdown :search="$searchforCategoryDropDown" :bloglanguage='$bloglanguage' />
+            <x-category-dropdown :search="$searchforCategoryDropDown" :bloglanguage="$bloglanguage" />
             <div class="row my-5">
                 @foreach ($blogs as $blog)
                 <div class="col-md-4">
@@ -43,3 +44,5 @@
         }
     }
 </script>
+{{-- this script is for realtime search feature. I use realtime search with livewire and use this script for reload when
+user is delete input and input is empty --}}

@@ -16,11 +16,15 @@ class BlogController extends Controller
     }
     public function allMyanBlogs()
     {
-        return view('livewire.myanblogs');
+        return view('blogs.all-blogs', [
+            'bloglanguage'=>'myanmar'
+        ]);
     }
     public function allEngBlogs()
     {
-        return view('blogs.all-blogs');
+        return view('blogs.all-blogs', [
+            'bloglanguage'=>'english'
+        ]);
     }
     public function showMyanBlog(Blog $blog)
     {
