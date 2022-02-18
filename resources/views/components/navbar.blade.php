@@ -18,11 +18,12 @@
                                         href="/">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{Request::is('mblogs') ? 'active' : ''}} {{Request::is('eblogs') ? 'active' : ''}}"
+                                    <a class="nav-link {{Request::segment(1)==='mblogs' ? 'active' : ''}} {{Request::is('eblogs') ? 'active' : ''}}"
                                         href="/mblogs">Blogs</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{Request::is('/') ? '' : ''}}" href="/other.html">Others</a>
+                                    <a class="nav-link {{Request::segment(1)==='others' ? 'active' : ''}}"
+                                        href="/others">Others</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link {{Request::is('/') ? '' : ''}}">Disabled</a>

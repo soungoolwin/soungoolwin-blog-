@@ -27,12 +27,14 @@ class Blog extends Model
                 ->orWhere('body', 'LIKE', '%'.$search.'%');
             });
         });
+        //This search is for live-wire
         $query->when($filter['search']??false, function ($query, $search) {
             $query->where(function ($query) use ($search) {
                 $query->where('title', 'LIKE', '%'.$search.'%')
                 ->orWhere('body', 'LIKE', '%'.$search.'%');
             });
         });
+        //This search is for search with url. When we filtered with category dropdown, we put search value to url. This is for that.
     }
     
     

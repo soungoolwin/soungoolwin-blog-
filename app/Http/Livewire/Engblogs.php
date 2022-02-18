@@ -8,12 +8,11 @@ use Livewire\Component;
 class Engblogs extends Component
 {
     public $search = '';
-    protected $filteredBlogs;
     public function render()
     {
-        $this->filteredBlogs = EngBlog::latest()->filter(request(['category','author']), $this->search);
+        $filteredBlogs = EngBlog::latest()->filter(request(['category','author']), $this->search)->orderBy('id', 'DESC');
         return view('livewire.engblogs', [
-            'blogs'=>$this->filteredBlogs->paginate(6)->withQueryString(),
+            'blogs'=>$filteredBlogs->paginate(6)->withQueryString(),
             'bloglanguage'=>'english',
             'searchforCategoryDropDown'=>$this->search
         ]);

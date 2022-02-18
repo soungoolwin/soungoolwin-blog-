@@ -11,6 +11,8 @@
                     class="text-decoration-none text-secondary {{Request::is('eblogs') ? 'navbaractive' : ''}}">English</a>
             </div>
             <x-category-dropdown :search="$searchforCategoryDropDown" :bloglanguage='$bloglanguage' />
+            {{-- get these two variables from Myanblogs (livewire) model and will pass these to CategoryDropdown.php. We
+            can't share directly cus we make this component with artisan command--}}
             <div class="row my-5">
                 @foreach ($blogs as $blog)
                 <div class="col-md-4">
@@ -43,3 +45,5 @@
         }
     }
 </script>
+{{-- this script is for realtime search feature. I use realtime search with livewire and use this script for reload when
+user is delete input and input is empty --}}

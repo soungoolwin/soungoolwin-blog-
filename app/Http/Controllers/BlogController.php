@@ -14,6 +14,7 @@ class BlogController extends Controller
             'blogs'=>Blog::inRandomOrder()->limit(2)->get()
         ]);
     }
+    // -----for all-blogs page -----//
     public function allMyanBlogs()
     {
         return view('blogs.all-blogs', [
@@ -26,6 +27,7 @@ class BlogController extends Controller
             'bloglanguage'=>'english'
         ]);
     }
+    // -----for all-blogs page -----//
     public function showMyanBlog(Blog $blog)
     {
         return view('blogs.show', [
