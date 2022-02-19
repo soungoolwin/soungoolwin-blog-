@@ -37,3 +37,25 @@
 .navbaractive {
     font-weight: bold;
 }
+
+.formheading {
+    text-decoration: none;
+    color: #374151;
+}
+
+.flashmessage {
+    margin-top: 56px;
+}
+
+.likebtn {
+    color: rgba(128, 128, 128, 0.657);
+}
+.likebtn:hover {
+    color: #3a4856;
+}
+.unlikebtn {
+    color: #3a4856;
+}
+.unlikebtn:hover {
+    color: rgba(128, 128, 128, 0.657);
+}

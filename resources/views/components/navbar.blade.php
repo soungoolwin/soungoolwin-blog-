@@ -18,16 +18,35 @@
                                         href="/">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{Request::segment(1)==='mblogs' ? 'active' : ''}} {{Request::is('eblogs') ? 'active' : ''}}"
+                                    <a class="nav-link {{Request::segment(1)==='mblogs' ? 'active' : ''}} {{Request::segment(1)==='eblogs' ? 'active' : ''}}"
                                         href="/mblogs">Blogs</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link {{Request::segment(1)==='others' ? 'active' : ''}}"
                                         href="/others">Others</a>
                                 </li>
+                                @guest
                                 <li class="nav-item">
-                                    <a class="nav-link {{Request::is('/') ? '' : ''}}">Disabled</a>
+                                    <a class="nav-link {{Request::segment(1)==='register' ? 'active' : ''}}"
+                                        href="/register">Register</a>
                                 </li>
+                                @endguest
+                                @guest
+                                <li class="nav-item">
+                                    <a class="nav-link {{Request::segment(1)==='login' ? 'active' : ''}}"
+                                        href="/login">Login</a>
+                                </li>
+                                @endguest
+
+                                @auth
+                                <li class="nav-item">
+                                    <form action="/logout" method="POST">
+                                        @csrf
+                                        <button type="submit" class="nav-link btn btn-link">Logout</button>
+                                    </form>
+
+                                </li>
+                                @endauth
                             </ul>
                         </div>
                     </div>

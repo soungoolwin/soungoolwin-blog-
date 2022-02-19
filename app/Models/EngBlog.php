@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class EngBlog extends Model
 {
     use HasFactory;
-    protected $with = ['author','category'];
+    protected $with = ['author','category','comments'];
 
     public function scopeFilter($query, $filter, $search=null)
     {
@@ -43,5 +43,9 @@ class EngBlog extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Ecomment::class);
     }
 }

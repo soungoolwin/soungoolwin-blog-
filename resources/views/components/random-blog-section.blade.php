@@ -8,7 +8,7 @@
     <div class="row">
         @foreach ($randomBlogs as $blog)
         <div class="col-md-6">
-            <a href="/blogs/{{$blog->slug}}">
+            <a href="/mblogs/{{$blog->slug}}">
                 <img src="{{$blog->image}}" class="img-fluid mx-auto d-block"
                     style="max-height: 8rem; object-fit: contain; min-height: 8rem" alt="..." />
             </a>

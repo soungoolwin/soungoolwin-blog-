@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
     use HasFactory;
-    protected $with = ['author','category'];
+    protected $with = ['author','category','comments','likers'];
     public function scopeFilter($query, $filter, $search=null)
     {
         $query->when($filter['category']??false, function ($query, $slug) {
@@ -46,5 +46,25 @@ class Blog extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function likers()
+    {
+        return $this->belongsToMany(User::class, 'blog_user');
+    }
+
+    //These like and unlike function is as a helper function for Blog controller. This function is very simple. This is for attach and detach for pivote table.
+    public function like()
+    {
+        $this->likers()->attach(auth()->id());
+    }
+    public function unlike()
+    {
+        $this->likers()->detach(auth()->id());
     }
 }

@@ -1,5 +1,7 @@
 <x-layout>
-
+    @if (session('message'))
+    <div class="alert alert-success text-center flashmessage">{{session('message')}}</div>
+    @endif
     <x-landing />
     <x-about />
     <x-photo-section />
