@@ -48,4 +48,19 @@ class EngBlog extends Model
     {
         return $this->hasMany(Ecomment::class);
     }
+
+    public function likers()
+    {
+        return $this->belongsToMany(User::class, 'eblog_user');
+    }
+
+    //These like and unlike function is as a helper function for Blog controller. This function is very simple. This is for attach and detach for pivote table.
+    public function like()
+    {
+        $this->likers()->attach(auth()->id());
+    }
+    public function unlike()
+    {
+        $this->likers()->detach(auth()->id());
+    }
 }

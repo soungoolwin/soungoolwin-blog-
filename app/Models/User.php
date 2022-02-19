@@ -42,4 +42,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Blog::class, 'blog_user');
     }
+    public function likeEblogs()
+    {
+        return $this->belongsToMany(EngBlog::class, 'eblog_user');
+    }
 }
