@@ -47,4 +47,6 @@ Route::controller(SubscribelikeController::class)->group(function () {
     Route::post('/mblogs/{blog:slug}/unlike', 'unstoretomblogstable');
     Route::post('/eblogs/{blog:slug}/like', 'storetoeblogstable');
     Route::post('/eblogs/{blog:slug}/unlike', 'unstoretoeblogstable');
+
+    Route::post('/subscribe', 'storetosubscribetable');
 });

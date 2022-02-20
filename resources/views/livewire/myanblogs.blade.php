@@ -13,8 +13,9 @@
             <x-category-dropdown :search="$searchforCategoryDropDown" :bloglanguage='$bloglanguage' />
             {{-- get these two variables from Myanblogs (livewire) model and will pass these to CategoryDropdown.php. We
             can't share directly cus we make this component with artisan command--}}
+
             <div class="row my-5">
-                @foreach ($blogs as $blog)
+                @forelse ($blogs as $blog)
                 <div class="col-md-4">
                     <a href="/{{$bloglanguage==='myanmar'?'mblogs':'eblogs'}}/{{$blog->slug}}">
                         <img src="{{$blog->image}}" class="img-fluid mx-auto d-block"
@@ -28,7 +29,9 @@
                         {{$blog->intro}}
                     </p>
                 </div>
-                @endforeach
+                @empty
+                <p class="text-center">No Blogs found</p>
+                @endforelse
                 {{$blogs->links()}}
             </div>
         </div>

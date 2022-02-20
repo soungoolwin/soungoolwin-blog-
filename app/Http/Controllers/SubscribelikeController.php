@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\EngBlog;
+use App\Models\Subscriber;
 use Illuminate\Http\Request;
 
 class SubscribelikeController extends Controller
@@ -27,6 +28,20 @@ class SubscribelikeController extends Controller
     public function unstoretoeblogstable(EngBlog $blog)
     {
         $blog->unlike();
+        return back();
+    }
+
+    public function storetosubscribetable()
+    {
+        if (!auth()->user()->isSubscribe) {
+            Subscriber::create([
+                'email'=>auth()->user()->email,
+                'user_id'=>auth()->user()->id
+            ]);
+        } else {
+            Subscriber::find(auth()->user()->isSubscribe->id)->delete();
+        }
+
         return back();
     }
 }

@@ -42,8 +42,15 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Blog::class, 'blog_user');
     }
+    //This is for like feature for myanmar blogs table. This is many to many rs.
     public function likeEblogs()
     {
         return $this->belongsToMany(EngBlog::class, 'eblog_user');
+    }
+    //This is for like feature for english blogs table. This is many to many rs.
+
+    public function isSubscribe()
+    {
+        return $this->hasOne(Subscriber::class);
     }
 }
