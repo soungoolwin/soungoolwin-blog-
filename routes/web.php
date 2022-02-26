@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
@@ -56,4 +57,8 @@ Route::controller(SubscribelikeController::class)->group(function () {
 Route::controller(DashboardController::class)->group(function () {
     Route::get('/blogs/publish', 'index');
     Route::post('/blogs/publish', 'store');
+});
+
+Route::name('admin.')->controller(ImageController::class)->group(function () {
+    Route::post('/blogs/publish', 'store')->name('images.store');
 });
