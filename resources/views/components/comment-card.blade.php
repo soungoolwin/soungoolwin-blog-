@@ -8,7 +8,7 @@
         <div class="card d-flex p-3 my-3 shadow-sm">
             <div class="d-flex">
                 <div>
-                    <img src="{{$comment->user->avatar}}" width="50" height="50" class="rounded-circle" alt="">
+                    <img src="/storage/{{$comment->user->avatar}}" width="50" height="50" class="rounded-circle" alt="">
                 </div>
                 <div class="ms-3">
                     <h6>SoungOoLwin</h6>

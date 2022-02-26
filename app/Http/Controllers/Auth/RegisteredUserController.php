@@ -9,7 +9,10 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
+use Symfony\Component\HttpKernel\HttpCache\Store;
 
 class RegisteredUserController extends Controller
 {
@@ -35,15 +38,25 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'username'=>['required', 'string', 'max:255',Rule::unique('users', 'username')],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
             'name' => $request->name,
+            'username'=>$request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        //for avatar
+        if ($request->hasFile('avatar')) {
+            $path=request()->file('avatar')->store('avatar');
+            $user->update([
+                'avatar'=>$path
+            ]);
+        }
 
         event(new Registered($user));
 

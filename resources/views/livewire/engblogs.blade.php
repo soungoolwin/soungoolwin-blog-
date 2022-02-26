@@ -24,7 +24,7 @@
                     </p>
                     <h4 class="text-center my-1">{{$blog->title}}</h4>
                     <p class="my-3">
-                        {{$blog->intro}}
+                        {!!$blog->intro!!}
                     </p>
                 </div>
                 @empty

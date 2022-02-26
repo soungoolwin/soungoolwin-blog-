@@ -10,7 +10,7 @@
             <!-- Validation Errors -->
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf
 
                 <!-- Name -->
@@ -20,13 +20,24 @@
                     <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
                         autofocus />
                 </div>
+                <!-- Username -->
+                <div>
+                    <x-label for="username" :value="__('Username')" />
 
+                    <x-input id="username" class="block mt-1 w-full" type="text" name="username"
+                        :value="old('username')" required autofocus />
+                </div>
                 <!-- Email Address -->
                 <div class="mt-4">
                     <x-label for="email" :value="__('Email')" />
 
                     <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
                         required />
+                </div>
+                <div class="mt-4">
+                    <x-label for="avatar" :value="__('Profile')" />
+
+                    <x-input id="avatar" class="block mt-1 w-full" type="file" name="avatar" :value="old('avatar')" />
                 </div>
 
                 <!-- Password -->

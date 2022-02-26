@@ -11,7 +11,7 @@ class SubscribelikeController extends Controller
 {
     public function storetomblogstable(Blog $blog)
     {
-        $blog->like();
+        $blog->like();//this like function is defined at Blog model. This is one kind of refactoring.
         return back();
     }
     public function unstoretomblogstable(Blog $blog)

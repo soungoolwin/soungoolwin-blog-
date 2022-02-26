@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SubscriberMail;
 use App\Models\Blog;
 use App\Models\Comment;
 use App\Models\Ecomment;
 use App\Models\EngBlog;
+use App\Models\Subscriber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class BlogController extends Controller
 {
@@ -47,3 +50,4 @@ class BlogController extends Controller
         ]);
     }
 }
+;

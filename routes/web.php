@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OthersController;
 use App\Http\Controllers\SubscribelikeController;
 use App\Models\SubscribeLike;
@@ -49,4 +50,10 @@ Route::controller(SubscribelikeController::class)->group(function () {
     Route::post('/eblogs/{blog:slug}/unlike', 'unstoretoeblogstable');
 
     Route::post('/subscribe', 'storetosubscribetable');
+});
+
+
+Route::controller(DashboardController::class)->group(function () {
+    Route::get('/blogs/publish', 'index');
+    Route::post('/blogs/publish', 'store');
 });

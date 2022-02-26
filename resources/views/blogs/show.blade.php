@@ -4,10 +4,15 @@
         <div class="card">
             <div class="row justify-content-md-center">
                 <div class="col-sm-5">
-                    <img src="/images/89C34350-2EF8-41C4-A1F2-8311CD252BB7.jpeg" class="img-fluid my-3" alt="">
+                    <img src="{{$blog->image}}" class="img-fluid my-3" alt="">
                     <div class="d-flex justify-content-between">
-                        <p class="text-center publish-date my-1">Author - {{$blog->author->name}} | Publish -
-                            {{$blog->created_at->diffForHumans()}}</p>
+                        <div>
+                            <div class="avatar">
+                                <img src="/storage/{{$blog->author->avatar}}" alt="..." class="img-fluid">
+                            </div>
+                            <p class="text-center publish-date my-1"> {{$blog->author->name}} |
+                                {{$blog->created_at->diffForHumans()}}</p>
+                        </div>
                         <div>
                             <x-like :blog='$blog' />
                         </div>
@@ -18,7 +23,7 @@
             </div>
             <div class="row col-sm-10 offset-sm-1">
                 <div class="col-sm-3 mx-auto"></div>
-                <p class="" style="line-height: 3rem; font-size: larger;">{{$blog->body}}</p>
+                <p class="" style="line-height: 3rem; font-size: larger;">{!!$blog->body!!}</p>
             </div>
         </div>
     </div>

@@ -59,3 +59,24 @@
 .unlikebtn:hover {
     color: rgba(128, 128, 128, 0.657);
 }
+
+/* For mail template */
+
+.mailHeading {
+    text-align: center;
+    color: #79a9d1;
+}
+.mailPara {
+    text-align: center;
+    margin: 5px 25px;
+}
+
+.avatar {
+    width: 13%;
+    height: 13%;
+    margin-left: 5px;
+}
+
+.avatar img {
+    border-radius: 50%;
+}

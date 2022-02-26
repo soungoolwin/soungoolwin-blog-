@@ -18,7 +18,7 @@ class Blog extends Model
         });
         $query->when($filter['author']??false, function ($query, $username) {
             $query->whereHas('author', function ($query) use ($username) {
-                $query->where('name', $username);
+                $query->where('username', $username);
             });
         });
         $query->when($search??false, function ($query, $search) {
