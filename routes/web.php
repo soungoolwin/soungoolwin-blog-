@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OthersController;
 use App\Http\Controllers\SubscribelikeController;
+use App\Http\Controllers\UserController;
 use App\Models\SubscribeLike;
 use Illuminate\Support\Facades\Route;
 
@@ -32,9 +34,6 @@ Route::controller(OthersController::class)->group(function () {
     Route::get('/others', 'youtubeandpodcast');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
@@ -53,12 +52,46 @@ Route::controller(SubscribelikeController::class)->group(function () {
     Route::post('/subscribe', 'storetosubscribetable');
 });
 
+Route::controller(CategoryController::class)->group(function () {
+    Route::get('/category/list', 'showandeditcategories');
+    Route::post('/category/publish', 'storecategory');
+    Route::post('/deletecategory/{category:slug}', 'deletecategory');
+    Route::get('/editcategory/{category:slug}', 'showeditcategoryform');
+    Route::post('/editcategory/{category:slug}', 'storecategoryeditdata');
+});
+
+Route::controller(UserController::class)->group(function () {
+    Route::get('/user/list', 'showusers');
+    Route::post('/deleteuser/{user:username}', 'deleteUser');
+    Route::get('/edituser/{user:username}', 'showEdittUserForm');
+    Route::post('/edituser/{user:username}', 'storeUserEditData');
+
+    //for subscriber
+    Route::get('/subscriber/list', 'showSubscribers');
+    Route::post('/deletesubscriber/{subscriber}', 'deleteSubscriber');
+});
+
 
 Route::controller(DashboardController::class)->group(function () {
-    Route::get('/blogs/publish', 'index');
-    Route::post('/blogs/publish', 'store');
+    //for upload and edit myanmr blogs.
+    Route::get('/mblog/publish', 'createmblog');
+    Route::post('/mblog/publish', 'storemblog');
+    Route::get('/mblog/list', 'showallmyanmarblogs');
+    Route::post('/deletemblog/{blog:slug}', 'deletemblog');
+    Route::get('/editmblog/{blog:slug}', 'showmblogeditform');
+    Route::post('/editmblog/{blog:slug}', 'editmblog');
+
+
+    //for upload and edit english blogs.
+    Route::get('/eblog/publish', 'createeblog');
+    Route::post('/eblog/publish', 'storeeblog');
+    Route::get('/eblog/list', 'showallenglishblogs');
+    Route::post('/deleteeblog/{blog:slug}', 'deleteeblog');
+    Route::get('/editeblog/{blog:slug}', 'showeblogeditform');
+    Route::post('/editeblog/{blog:slug}', 'editeblog');
 });
 
 Route::name('admin.')->controller(ImageController::class)->group(function () {
-    Route::post('/blogs/publish', 'store')->name('images.store');
+    Route::post('/images/publishtomblog', 'storetomblog')->name('images.storetomblog');
+    Route::post('/images/publishtoeblog', 'storetoeblog')->name('images.storetoeblog');
 });

@@ -1,9 +1,9 @@
 <x-layout>
 
-    <div class="container tosepeartewithnav" style="width: 1000px;">
-        <div class="card">
+    <div class="container tosepeartewithnav">
+        <div class="card text-center p-3 col-md-8 offset-md-2">
             <div class="row justify-content-md-center">
-                <div class="col-sm-5">
+                <div class="col-md-8">
                     <img src="{{$blog->image}}" class="img-fluid my-3" alt="">
                     <div class="d-flex justify-content-between">
                         <div>
@@ -21,8 +21,7 @@
                     <h3 class="text-center">{{$blog->title}}</h3>
                 </div>
             </div>
-            <div class="row col-sm-10 offset-sm-1">
-                <div class="col-sm-3 mx-auto"></div>
+            <div class="row">
                 <p class="" style="line-height: 3rem; font-size: larger;">{!!$blog->body!!}</p>
             </div>
         </div>
@@ -39,7 +38,5 @@
     @endguest
 
     <x-comment-card :comments='$comments' />
-
-    <x-subscribeForm />
 
 </x-layout>

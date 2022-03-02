@@ -6,7 +6,7 @@
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Title</label>
-                        <input type="text" name="title" class="form-control" value="{{$blog->title}}">
+                        <input type="text" name="title" class="form-control" value="{{old('title')}}">
                     </div>
                     @error('title')
                     <div class="alert alert-danger">{{$message}}</div>
@@ -15,7 +15,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Slug</label>
-                        <input type="text" name="slug" class="form-control" value="{{$blog->slug}}">
+                        <input type="text" name="slug" class="form-control" value="{{old('slug')}}">
                     </div>
                     @error('slug')
                     <div class="alert alert-danger">{{$message}}</div>
@@ -23,7 +23,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Intro</label>
-                        <input type="text" name="intro" class="form-control" value="{{$blog->intro}}">
+                        <input type="text" name="intro" class="form-control" value="{{old('intro')}}">
                     </div>
                     @error('intro')
                     <div class="alert alert-danger">{{$message}}</div>
@@ -31,7 +31,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Image</label>
-                        <input type="text" name="image" class="form-control" value="{{$blog->image}}">
+                        <input type="text" name="image" class="form-control" value="{{old('image')}}">
                     </div>
                     @error('image')
                     <div class="alert alert-danger">{{$message}}</div>
@@ -39,7 +39,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Body</label>
-                        <textarea name="body" id="editor" class="form-control">{{$blog->body}}</textarea>
+                        <textarea name="body" id="editor" class="form-control">{{old('body')}}</textarea>
                     </div>
                     @error('body')
                     <div class="alert alert-danger">{{$message}}</div>
@@ -58,6 +58,7 @@
         </div>
     </div>
     <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+
     <script>
         class MyUploadAdapter {
         constructor( loader ) {
@@ -89,7 +90,7 @@
     // integration to choose the right communication channel. This example uses
     // a POST request with JSON as a data structure but your configuration
     // could be different.
-    xhr.open( 'POST', '{{route('admin.images.storetoeblog')}}', true );
+    xhr.open( 'POST', '{{route('admin.images.storetomblog')}}', true );
     xhr.setRequestHeader('x-csrf-token', '{{ csrf_token() }}');
     xhr.responseType = 'json';
     } 
@@ -140,7 +141,7 @@
     // Prepare the form data.
     const data = new FormData();
     
-    data.append( 'uploadtoeblog', file );
+    data.append( 'uploadtomblog', file );
     
     // Important note: This is the right place to implement security mechanisms
     // like authentication and CSRF protection. For instance, you can use

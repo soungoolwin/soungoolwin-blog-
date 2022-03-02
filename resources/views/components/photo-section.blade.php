@@ -15,5 +15,6 @@
             </div>
         </div>
         @endforeach
+        {{$photos->links()}}
     </div>
 </div>

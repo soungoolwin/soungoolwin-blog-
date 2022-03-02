@@ -10,30 +10,128 @@ use Illuminate\Validation\Rule;
 
 class DashboardController extends Controller
 {
-    public function index()
+    //FOR MYANMAR BLOG
+    public function createmblog()
     {
-        return view('dashboard.publish-blog', [
+        return view('dashboard.publish-mblog', [
             'categories'=>Category::all()
         ]);
     }
-    public function store()
+    public function storemblog()
     {
-        if (request('language')==='English') {
-            $blogtable = "blogs";
-        } else {
-            $blogtable = "eng_blogs";
-        }
         $formData = request()->validate([
             'title'=>['required'],
-            'slug'=>['required', Rule::unique($blogtable, 'slug')],
-            'image'=>['required'],
+            'slug'=>['required', Rule::unique('eng_blogs', 'slug')],
+            'intro'=>['required'],
             'body'=>['required'],
+            'image'=>['required'],
             'category_id'=>['required', Rule::exists('categories', 'id')]
         ]);
         $formData['user_id']= auth()->id();
-        $formData['intro'] = substr($formData['body'], 0, 100);
+
         Blog::create($formData);
 
         return redirect('/');
+    }
+
+    public function showallmyanmarblogs()
+    {
+        return view('dashboard.mblogslist', [
+            'blogs'=>Blog::all()
+        ]);
+    }
+    public function deletemblog(Blog $blog)
+    {
+        $blog->delete();
+        return back();
+    }
+
+    public function showmblogeditform(Blog $blog)
+    {
+        return view('dashboard.edit-mblog', [
+            'blog'=>$blog,
+            'categories'=>Category::all()
+        ]);
+    }
+
+    public function editmblog(Blog $blog)
+    {
+        $formData = request()->validate([
+            'title'=>['required'],
+            'slug'=>['required'],
+            'intro'=>['required'],
+            'body'=>['required'],
+            'image'=>['required'],
+            'category_id'=>['required', Rule::exists('categories', 'id')]
+        ]);
+        $formData['user_id']= auth()->id();
+
+        $blog->update($formData);
+        return redirect('/mblog/list');
+    }
+
+
+    //for english blogs
+
+    public function createeblog()
+    {
+        return view('dashboard.publish-eblog', [
+            'categories'=>Category::all()
+        ]);
+    }
+
+    public function storeeblog()
+    {
+        $formData = request()->validate([
+            'title'=>['required'],
+            'slug'=>['required', Rule::unique('eng_blogs', 'slug')],
+            'intro'=>['required'],
+            'body'=>['required'],
+            'image'=>['required'],
+            'category_id'=>['required', Rule::exists('categories', 'id')]
+        ]);
+        $formData['user_id']= auth()->id();
+
+        EngBlog::create($formData);
+
+        return redirect('/');
+    }
+
+
+
+    public function showallenglishblogs()
+    {
+        return view('dashboard.eblogslist', [
+            'blogs'=>EngBlog::all()
+        ]);
+    }
+
+    public function deleteeblog(EngBlog $blog)
+    {
+        $blog->delete();
+        return back();
+    }
+
+    public function showeblogeditform(EngBlog $blog)
+    {
+        return view('dashboard.edit-eblog', [
+            'blog'=>$blog,
+            'categories'=>Category::all()
+        ]);
+    }
+    public function editeblog(EngBlog $blog)
+    {
+        $formData = request()->validate([
+            'title'=>['required'],
+            'slug'=>['required'],
+            'intro'=>['required'],
+            'body'=>['required'],
+            'image'=>['required'],
+            'category_id'=>['required', Rule::exists('categories', 'id')]
+        ]);
+        $formData['user_id']= auth()->id();
+        $blog->update($formData);
+        
+        return redirect('eblog/list');
     }
 }

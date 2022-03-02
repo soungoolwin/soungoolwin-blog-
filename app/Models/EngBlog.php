@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class EngBlog extends Model
+class EngBlog extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
     protected $with = ['author','category','comments'];
 
     public function scopeFilter($query, $filter, $search=null)
@@ -62,5 +65,18 @@ class EngBlog extends Model
     public function unlike()
     {
         $this->likers()->detach(auth()->id());
+    }
+
+    //from spatie
+    public static function last()
+    {
+        return static::all()->last();
+    }
+        
+    // for image size of blog body with spatie, ckeditor
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+                  ->width(320);
     }
 }

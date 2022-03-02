@@ -25,7 +25,7 @@ class PhotoSection extends Component
     public function render()
     {
         return view('components.photo-section', [
-            'photos'=>Photo::inRandomOrder()->limit(2)->get()
+            'photos'=>Photo::orderBy('id', 'DESC')->paginate(2)->withQueryString()
         ]);
     }
 }
