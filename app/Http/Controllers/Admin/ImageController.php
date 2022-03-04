@@ -20,7 +20,7 @@ class ImageController extends Controller
          
         return response()->json([
 
-            'url'=>$image->getUrl('thumb')
+            'url'=>$image->getUrl('thumbnail')
         ]);
     }
 
@@ -34,7 +34,7 @@ class ImageController extends Controller
          
         return response()->json([
 
-            'url'=>$image->getUrl('thumb')
+            'url'=>$image->getUrl('thumbnail')
         ]);
     }
 }

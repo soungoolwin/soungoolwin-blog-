@@ -37,6 +37,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/subscriber/list">Subscribers</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/photo/list">Photos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/youtube/list">YouTube</a>
+                                </li>
 
                                 @auth
                                 <li class="nav-item">

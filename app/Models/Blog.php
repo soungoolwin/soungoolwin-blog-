@@ -81,7 +81,8 @@ class Blog extends Model implements HasMedia
     // for image size of blog body with spatie, ckeditor
     public function registerMediaConversions(Media $media = null): void
     {
-        $this->addMediaConversion('thumb')
-              ->width(320);
+        $this->addMediaConversion('thumbnail')
+              ->width(320)
+              ->nonQueued();
     }
 }

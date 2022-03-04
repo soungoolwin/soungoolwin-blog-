@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OthersController;
+use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\SubscribelikeController;
 use App\Http\Controllers\UserController;
 use App\Models\SubscribeLike;
@@ -32,6 +33,11 @@ Route::controller(BlogController::class)->group(function () {
 
 Route::controller(OthersController::class)->group(function () {
     Route::get('/others', 'youtubeandpodcast');
+    Route::get('/youtube/list', 'showYtvideos')->middleware('admin');
+    Route::post('/video/publish', 'storevideo')->middleware('admin');
+    Route::post('/deletevideo/{video}', 'deleteVideo')->middleware('admin');
+    Route::get('/editvideo/{video}', 'showEditVideoForm')->middleware('admin');
+    Route::post('/editvideo/{video}', 'storeVideoEditData')->middleware('admin');
 });
 
 
@@ -52,7 +58,7 @@ Route::controller(SubscribelikeController::class)->group(function () {
     Route::post('/subscribe', 'storetosubscribetable');
 });
 
-Route::controller(CategoryController::class)->group(function () {
+Route::controller(CategoryController::class)->middleware('admin')->group(function () {
     Route::get('/category/list', 'showandeditcategories');
     Route::post('/category/publish', 'storecategory');
     Route::post('/deletecategory/{category:slug}', 'deletecategory');
@@ -60,7 +66,7 @@ Route::controller(CategoryController::class)->group(function () {
     Route::post('/editcategory/{category:slug}', 'storecategoryeditdata');
 });
 
-Route::controller(UserController::class)->group(function () {
+Route::controller(UserController::class)->middleware('admin')->group(function () {
     Route::get('/user/list', 'showusers');
     Route::post('/deleteuser/{user:username}', 'deleteUser');
     Route::get('/edituser/{user:username}', 'showEdittUserForm');
@@ -71,8 +77,16 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/deletesubscriber/{subscriber}', 'deleteSubscriber');
 });
 
+Route::controller(PhotoController::class)->middleware('admin')->group(function () {
+    Route::get('/photo/list', 'showPhotos');
+    Route::post('/deletephoto/{photo}', 'deletePhoto');
+    Route::post('/photo/publish', 'storePhoto');
+    Route::get('/editphoto/{photo}', 'showEditPhotoForm');
+    Route::post('/editphoto/{photo}', 'storePhotoEditData');
+});
 
-Route::controller(DashboardController::class)->group(function () {
+
+Route::controller(DashboardController::class)->middleware('admin')->group(function () {
     //for upload and edit myanmr blogs.
     Route::get('/mblog/publish', 'createmblog');
     Route::post('/mblog/publish', 'storemblog');
@@ -91,7 +105,8 @@ Route::controller(DashboardController::class)->group(function () {
     Route::post('/editeblog/{blog:slug}', 'editeblog');
 });
 
-Route::name('admin.')->controller(ImageController::class)->group(function () {
+//for ckeditor body
+Route::name('admin.')->controller(ImageController::class)->middleware('admin')->group(function () {
     Route::post('/images/publishtomblog', 'storetomblog')->name('images.storetomblog');
     Route::post('/images/publishtoeblog', 'storetoeblog')->name('images.storetoeblog');
 });

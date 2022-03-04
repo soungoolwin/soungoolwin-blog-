@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SubscriberMail;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\EngBlog;
+use App\Models\Subscriber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 
 class DashboardController extends Controller
@@ -31,9 +34,13 @@ class DashboardController extends Controller
 
         Blog::create($formData);
 
+        // $subscribers = Subscriber::all();
+
+        // $subscribers->each(function ($subscriber) use ($formData) {
+        //     Mail::to($subscriber->email)->queue(new SubscriberMail($formData, 'mblogs'));
+        // });
         return redirect('/');
     }
-
     public function showallmyanmarblogs()
     {
         return view('dashboard.mblogslist', [
@@ -93,6 +100,12 @@ class DashboardController extends Controller
         $formData['user_id']= auth()->id();
 
         EngBlog::create($formData);
+
+        // $subscribers = Subscriber::all();
+
+        // $subscribers->each(function ($subscriber) use ($formData) {
+        //     Mail::to($subscriber->email)->queue(new SubscriberMail($formData, 'eblogs'));
+        // });
 
         return redirect('/');
     }
