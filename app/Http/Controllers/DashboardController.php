@@ -34,11 +34,11 @@ class DashboardController extends Controller
 
         Blog::create($formData);
 
-        // $subscribers = Subscriber::all();
+        $subscribers = Subscriber::all();
 
-        // $subscribers->each(function ($subscriber) use ($formData) {
-        //     Mail::to($subscriber->email)->queue(new SubscriberMail($formData, 'mblogs'));
-        // });
+        $subscribers->each(function ($subscriber) use ($formData) {
+            Mail::to($subscriber->email)->queue(new SubscriberMail($formData, 'mblogs'));
+        });
         return redirect('/');
     }
     public function showallmyanmarblogs()
@@ -101,11 +101,11 @@ class DashboardController extends Controller
 
         EngBlog::create($formData);
 
-        // $subscribers = Subscriber::all();
+        $subscribers = Subscriber::all();
 
-        // $subscribers->each(function ($subscriber) use ($formData) {
-        //     Mail::to($subscriber->email)->queue(new SubscriberMail($formData, 'eblogs'));
-        // });
+        $subscribers->each(function ($subscriber) use ($formData) {
+            Mail::to($subscriber->email)->queue(new SubscriberMail($formData, 'eblogs'));
+        });
 
         return redirect('/');
     }
