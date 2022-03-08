@@ -59,7 +59,7 @@ class RegisteredUserController extends Controller
         $randomcode = rand(1000, 9999);
 
         
-        Mail::to($user['email'])->send(new VerifyMail($randomcode));
+        Mail::to($user['email'])->queue(new VerifyMail($randomcode));
         return view('components.verify-wait', [
             'code'=>$randomcode,
             'users'=>$user

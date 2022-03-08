@@ -38,7 +38,7 @@ class DashboardController extends Controller
         $subscribers = Subscriber::all();
 
         $subscribers->each(function ($subscriber) use ($formData) {
-            Mail::to($subscriber->email)->send(new SubscriberMail($formData));
+            Mail::to($subscriber->email)->queue(new SubscriberMail($formData));
         });
         return redirect('/');
     }
@@ -106,7 +106,7 @@ class DashboardController extends Controller
         $formData['btn_url']= "https://soungoolwin.com/eblogs/{$formData['slug']}";
 
         $subscribers->each(function ($subscriber) use ($formData) {
-            Mail::to($subscriber->email)->send(new SubscriberMail($formData));
+            Mail::to($subscriber->email)->queue(new SubscriberMail($formData));
         });
 
         return redirect('/');
