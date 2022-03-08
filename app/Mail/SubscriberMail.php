@@ -12,16 +12,14 @@ class SubscriberMail extends Mailable
     use Queueable, SerializesModels;
 
     public $blog;
-    public $bloglanguage;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($formData, $bloglanguage)
+    public function __construct($formData)
     {
         $this->blog = $formData;
-        $this->bloglanguage = $bloglanguage;
     }
 
     /**
@@ -32,8 +30,7 @@ class SubscriberMail extends Mailable
     public function build()
     {
         return $this->markdown('emails.subscribermailtemp', [
-            'blog'=>$this->blog,
-            'language'=>$this->bloglanguage
+            'blog'=>$this->blog
          ]);
     }
 }

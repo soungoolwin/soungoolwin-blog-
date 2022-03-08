@@ -31,13 +31,15 @@ class DashboardController extends Controller
             'category_id'=>['required', Rule::exists('categories', 'id')]
         ]);
         $formData['user_id']= auth()->id();
+        $formData['btn_url']= "https://www.soungoolwin.com/mblogs/{$formData['slug']}";
+        dd($formData['btn_url']);
 
         Blog::create($formData);
 
         $subscribers = Subscriber::all();
 
         $subscribers->each(function ($subscriber) use ($formData) {
-            Mail::to($subscriber->email)->queue(new SubscriberMail($formData, 'mblogs'));
+            Mail::to($subscriber->email)->queue(new SubscriberMail($formData));
         });
         return redirect('/');
     }
@@ -98,13 +100,14 @@ class DashboardController extends Controller
             'category_id'=>['required', Rule::exists('categories', 'id')]
         ]);
         $formData['user_id']= auth()->id();
+        $formData['btn_url']= "https://www.soungoolwin.com/eblogs/{$formData['slug']}";
 
         EngBlog::create($formData);
 
         $subscribers = Subscriber::all();
 
         $subscribers->each(function ($subscriber) use ($formData) {
-            Mail::to($subscriber->email)->queue(new SubscriberMail($formData, 'eblogs'));
+            Mail::to($subscriber->email)->queue(new SubscriberMail($formData));
         });
 
         return redirect('/');
