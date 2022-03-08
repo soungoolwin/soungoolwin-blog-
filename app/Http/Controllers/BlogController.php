@@ -16,7 +16,7 @@ class BlogController extends Controller
     public function random()
     {
         return view('blogs.home', [
-            'blogs'=>Blog::all()
+            'blogs'=>Blog::inRandomOrder()->limit(2)->get()
         ]);
     }
     // -----for all-blogs page -----//
