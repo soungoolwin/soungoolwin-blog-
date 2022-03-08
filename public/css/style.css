@@ -80,3 +80,7 @@
 .avatar img {
     border-radius: 50%;
 }
+
+.verify-wait {
+    margin: 300px 0;
+}

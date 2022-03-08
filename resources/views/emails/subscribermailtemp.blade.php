@@ -3,7 +3,7 @@
 <h2>{{$blog['title']}}</h2>
 {{$blog['intro']}}
 
-@component('mail::button', ['url' => $blog['btn_url'])
+@component('mail::button', ['url' => $blog['btn_url']])
 Read More
 @endcomponent
 
