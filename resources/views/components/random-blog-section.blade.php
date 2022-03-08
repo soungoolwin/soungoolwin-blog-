@@ -1,6 +1,8 @@
 <!-- ------------blog-section------------- -->
 @props(['randomBlogs'])
 
+@if ($randomBlogs)
+
 <div class="container">
     <h3 class="text-center my-5">
         <a href="" class="text-decoration-none">BLOGS YOU MAY LIKE</a>
@@ -23,4 +25,5 @@
 
     </div>
 </div>
+@endif
 <!-- ------------blog-section-end------------- -->
