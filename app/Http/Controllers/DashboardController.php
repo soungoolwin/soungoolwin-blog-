@@ -31,8 +31,8 @@ class DashboardController extends Controller
             'category_id'=>['required', Rule::exists('categories', 'id')]
         ]);
         $formData['user_id']= auth()->id();
-        $formData['btn_url']= "https://www.soungoolwin.com/mblogs/{$formData['slug']}";
         dd($formData['btn_url']);
+        $formData['btn_url']= "https://www.soungoolwin.com/mblogs/{$formData['slug']}";
 
         Blog::create($formData);
 
@@ -100,9 +100,9 @@ class DashboardController extends Controller
             'category_id'=>['required', Rule::exists('categories', 'id')]
         ]);
         $formData['user_id']= auth()->id();
-        $formData['btn_url']= "https://www.soungoolwin.com/eblogs/{$formData['slug']}";
-
+        
         EngBlog::create($formData);
+        $formData['btn_url']= "https://www.soungoolwin.com/eblogs/{$formData['slug']}";
 
         $subscribers = Subscriber::all();
 
