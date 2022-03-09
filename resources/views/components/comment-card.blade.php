@@ -22,6 +22,7 @@
 
 
                 </div>
+                @if (auth()->user()->id == $comment->user_id)
                 <div class="ms-3">
                     <form action="/{{Request::segment(1)}}/comments/{{$comment->id}}/delete" method="POST">
                         @csrf
@@ -29,6 +30,7 @@
                     </form>
 
                 </div>
+                @endif
             </div>
             <p class="mt-1">
                 {{$comment->body}}
