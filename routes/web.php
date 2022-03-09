@@ -49,6 +49,8 @@ require __DIR__.'/auth.php';
 Route::controller(CommentController::class)->group(function () {
     Route::post('/mblogs/{blog:slug}/comment', 'storetomblogstable');
     Route::post('/eblogs/{blog:slug}/comment', 'storetoeblogstable');
+    Route::post('/mblogs/comments/{comment}/delete', 'delcmtmblogstable');
+    Route::post('/eblogs/comments/{comment}/delete', 'delcmteblogstable');
 });
 
 Route::controller(SubscribelikeController::class)->group(function () {

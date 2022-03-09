@@ -6,7 +6,6 @@
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
-                        <th scope="col">VIdeo Url</th>
                         <th scope="col">Edit</th>
                     </tr>
                 </thead>
@@ -14,7 +13,6 @@
                     @foreach ($videos as $video)
                     <tr>
                         <td>{{$video->name}}</td>
-                        <td>{{$video->source}}</td>
                         <td>
                             <form action="/editvideo/{{$video->id}}">
                                 @csrf

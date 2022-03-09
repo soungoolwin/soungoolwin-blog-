@@ -8,7 +8,7 @@
                     <div class="d-flex justify-content-between">
                         <div>
                             <div class="avatar">
-                                <img src="/storage/{{$blog->author->avatar}}" alt="..." class="img-fluid">
+                                <img src="{{$blog->author->avatar}}" alt="..." class="img-fluid">
                             </div>
                             <p class="text-center publish-date my-1"> {{$blog->author->name}} |
                                 {{$blog->created_at->diffForHumans()}}</p>

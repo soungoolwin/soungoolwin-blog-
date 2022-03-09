@@ -15,14 +15,16 @@
             <div class="row my-5">
                 @forelse ($blogs as $blog)
                 <div class="col-md-4">
-                    <a href="/{{$bloglanguage==='myanmar'?'mblogs':'eblogs'}}/{{$blog->slug}}">
+                    <a href="/{{$bloglanguage==='myanmar'?'mblogs':'eblogs'}}/{{$blog->slug}}"
+                        class="text-decoration-none">
                         <img src="{{$blog->image}}" class="img-fluid mx-auto d-block"
                             style="max-height: 8rem; object-fit: contain; min-height: 8rem" alt="..." />
+
+                        <p class="text-center text-secondary publish-date my-3">Publish Date :
+                            {{$blog->created_at->diffForHumans()}} | #{{$blog->category->name}}
+                        </p>
+                        <h4 class="text-center my-1">{{$blog->title}}</h4>
                     </a>
-                    <p class="text-center text-secondary publish-date my-3">Publish Date :
-                        {{$blog->created_at->diffForHumans()}} | #{{$blog->category->name}}
-                    </p>
-                    <h4 class="text-center my-1">{{$blog->title}}</h4>
                     <p class="my-3">
                         {!!$blog->intro!!}
                     </p>

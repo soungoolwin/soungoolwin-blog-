@@ -2,7 +2,8 @@
     <div class="container">
         <div class="row verify-wait">
             <div class="col-md-6 offset-md-3 card p-5">
-                <h3>Get verification code from your email! It may takes a few seconds.</h3>
+                <h3 class="text-center">Get verification code from your email! It may takes a few seconds. If you didn't
+                    receive, check spam folder also.</h3>
                 <form action="/verify-email" method="POST" class="text-center">
                     @csrf
                     <div class="form-group row">

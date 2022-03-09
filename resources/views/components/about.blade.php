@@ -7,8 +7,8 @@
                     <p class="text-center">
                         I AM A BACKEND WEB DEVELOPER AND STILL LEARNING NEW THINGS.
                         THEN, AMOUNG OF MY SOME HOBBIES, I AM KEEN ON MAKING BLOGS A
-                        LOT. I WANT TO SHARE MY EXPERIENCES THAT I GET FROM MY CURIOUS
-                        ON MY HOBBIES. SO I MADE THIS WEBSITE FOT THAT REASON AND AS MY
+                        LOT. I WANT TO SHARE MY EXPERIENCES THAT I GET FROM MY CURIOSITY
+                        ON MY HOBBIES. SO I MADE THIS WEBSITE FOR THAT REASON AND AS MY
                         PORTFOLIO ALSO. I WILL UPLOAD BLOGS AND MANY OTHER EFFORTS OF
                         ME.
                     </p>

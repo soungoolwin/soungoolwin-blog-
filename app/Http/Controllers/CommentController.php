@@ -37,4 +37,15 @@ class CommentController extends Controller
         ]);
         return back();
     }
+    public function delcmtmblogstable(Comment $comment)
+    {
+        $comment->delete();
+        return back();
+    }
+
+    public function delcmteblogstable(Ecomment $comment)
+    {
+        $comment->delete();
+        return back();
+    }
 }

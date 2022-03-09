@@ -6,7 +6,6 @@
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
-                        <th scope="col">Image Url</th>
                         <th scope="col">Edit</th>
                     </tr>
                 </thead>
@@ -14,7 +13,6 @@
                     @foreach ($photos as $photo)
                     <tr>
                         <td>{{$photo->name}}</td>
-                        <td>{{$photo->source}}</td>
                         <td>
                             <form action="/editphoto/{{$photo->id}}">
                                 @csrf
