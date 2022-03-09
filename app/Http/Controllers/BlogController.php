@@ -38,7 +38,7 @@ class BlogController extends Controller
         return view('blogs.show', [
             'blog'=>$blog,
             'bloglanguage'=>'mblogs',
-            'comments'=>$blog->comments
+            'comments'=>$blog->comments->sortDesc(),
         ]);
     }
     public function showEngBlog(EngBlog $blog)
@@ -46,7 +46,7 @@ class BlogController extends Controller
         return view('blogs.show', [
             'blog'=>$blog,
             'bloglanguage'=>'eblogs',
-            'comments'=>$blog->comments
+            'comments'=>$blog->comments->sortDesc(),
         ]);
     }
 }
