@@ -10,7 +10,7 @@
                     <div class="form-group">
                         <small id="emailHelp" class="form-text text-muted">Click subscribe button to
                             alert you every
-                            time new blogs is upload.</small>
+                            time new blog is upload.</small>
                     </div>
                     @auth
                     @if (!auth()->user()->isSubscribe)
