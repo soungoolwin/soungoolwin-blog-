@@ -34,11 +34,6 @@
                     <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
                         required />
                 </div>
-                <div class="mt-4">
-                    <x-label for="avatar" :value="__('Profile')" />
-
-                    <x-input id="avatar" class="block mt-1 w-full" type="file" name="avatar" :value="old('avatar')" />
-                </div>
 
                 <!-- Password -->
                 <div class="mt-4">
