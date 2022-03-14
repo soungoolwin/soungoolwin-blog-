@@ -45,7 +45,7 @@ class DashboardController extends Controller
     public function showallmyanmarblogs()
     {
         return view('dashboard.mblogslist', [
-            'blogs'=>Blog::all()
+            'blogs'=>Blog::orderBy('id', 'DESC')->paginate(4)->withQueryString()
         ]);
     }
     public function deletemblog(Blog $blog)
@@ -117,7 +117,7 @@ class DashboardController extends Controller
     public function showallenglishblogs()
     {
         return view('dashboard.eblogslist', [
-            'blogs'=>EngBlog::all()
+            'blogs'=>EngBlog::orderBy('id', 'DESC')->paginate(4)->withQueryString()
         ]);
     }
 
