@@ -57,7 +57,7 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+    <script src="/ckeditor/ckeditor.js"></script>
 
     <script>
         class MyUploadAdapter {
